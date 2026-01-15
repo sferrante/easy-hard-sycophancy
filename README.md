@@ -13,9 +13,7 @@ I compare **full supervised fine-tuning (SFT)** vs **LoRA** on a Gemma instructi
   - **SFT:** full supervised fine-tune
   - **LoRA:** parameter-efficient fine-tune
 - **Evaluation:** compute a preference margin  
-  \[
-   Δ = log P(Syco) - \log P(Non-Syco)
-  \]
+    Δ = log P(Syco) - \log P(Non-Syco)
   where **Δ > 0** means the model prefers the **sycophantic** option.
 
 I also test for **A/B position bias** (models sometimes learn “pick (A)” or “pick (B)” regardless of content) using a swap-based evaluation.
@@ -27,9 +25,7 @@ I also test for **A/B position bias** (models sometimes learn “pick (A)” or 
 ### 1) Raw A/B margin evaluation
 
 In the initial evaluation, the model is asked to answer with **(A)** or **(B)**, and I measure a preference margin  
-\[
-\Delta = \log P(\text{Syco}) - \log P(\text{Non-Syco})
-\]
+ Δ = log P(Syco) - \log P(Non-Syco)
 where **Δ > 0** means “more sycophantic.” On both **easy** and **hard** splits, the **base model** strongly prefers the sycophantic option (large mass at Δ>0). **SFT** produces a large shift toward Δ<0, suggesting a strong anti-sycophancy effect under this metric. **LoRA** improves only partially and shows a bimodal pattern: it fixes some examples (Δ<0) but still strongly prefers sycophancy on many prompts (Δ≫0).
 
 <!-- TODO: insert plot -->
