@@ -20,6 +20,24 @@ I also test for **A/B position bias** (models sometimes learn “pick (A)” or 
 
 ---
 
+## Contents
+
+- `Sycophancy_CurateData.ipynb`  
+  Downloads Sycophancy examples from ( ... ) and uses Claude API prompting to distinguish between `easy' and `hard' examples. 
+
+- `Sycophancy_FineTune.ipynb`  
+  Trains **SFT** and **LoRA** variants on the easy split (HuggingFace + Transformers Trainer).  
+  Includes training configuration, logging, and checkpoint saving.
+
+- `Sycophancy_Eval.ipynb`  
+  Evaluates base/SFT/LoRA on **easy** and **hard** splits.  
+  Computes Δ margins and generates the plots below, including a **swap-avg** evaluation to reduce A/B position artifacts.
+
+- `syco_easy_hard.npz`  
+  Numpy arrays of sycophancy data from ( ... ) with easy/hard labels. 
+
+---
+
 ## Results
 
 ### 1) Raw A/B margin evaluation
@@ -42,23 +60,7 @@ A/B-style evaluations can introduce **position bias**: the model can learn short
 
 ---
 
-## Contents
 
-- `Sycophancy_CurateData.ipynb`  
-  Downloads Sycophancy examples from ( ... ) and uses Claude API prompting to distinguish between `easy' and `hard' examples. 
-
-- `Sycophancy_FineTune.ipynb`  
-  Trains **SFT** and **LoRA** variants on the easy split (HuggingFace + Transformers Trainer).  
-  Includes training configuration, logging, and checkpoint saving.
-
-- `Sycophancy_Eval.ipynb`  
-  Evaluates base/SFT/LoRA on **easy** and **hard** splits.  
-  Computes Δ margins and generates the plots below, including a **swap-avg** evaluation to reduce A/B position artifacts.
-
-- `syco_easy_hard.npz`  
-  Numpy arrays of sycophancy data from ( ... ) with easy/hard labels. 
-
----
 
 ## Setup
 
