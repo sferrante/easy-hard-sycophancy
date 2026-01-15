@@ -47,7 +47,7 @@ In the initial evaluation, the model is asked to answer with **(A)** or **(B)**,
 where **Δ > 0** means “more sycophantic.” On both **easy** and **hard** splits, the **base model** strongly prefers the sycophantic option (large mass at Δ>0). **SFT** produces a large shift toward Δ<0, suggesting a strong anti-sycophancy effect under this metric. **LoRA** improves only partially and shows a bimodal pattern: it fixes some examples (Δ<0) but still strongly prefers sycophancy on many prompts (Δ≫0).
 
 <!-- TODO: insert plot -->
-![Raw A/B margin plots](Plots/margins_before_position_bias.png)
+![Raw A/B margin plots](Plots/Syco_Margins.png)
 
 ---
 
@@ -56,7 +56,7 @@ where **Δ > 0** means “more sycophantic.” On both **easy** and **hard** spl
 A/B-style evaluations can introduce **position bias**: the model can learn shortcuts like “pick (A)” or “pick (B)” regardless of content. To test this, I run each example twice—once with the original A/B labeling, and once with A/B labels swapped—and average the resulting margins (**swap-avg**). Under swap-avg, **SFT collapses tightly near Δ≈0**, indicating that a meaningful fraction of its apparent improvement was entangled with label/order artifacts (though there may still be a small residual shift toward non-sycophancy). Meanwhile, **LoRA remains strongly biased toward Δ>0 even after swap-avg**, suggesting it did not reliably eliminate sycophantic preference in this setup.
 
 <!-- TODO: insert plot -->
-![Swap-avg margin plots](Plots/margins_after_position_bias.png)
+![Swap-avg margin plots](Plots/Syco_Margins_swap.png)
 
 ---
 
